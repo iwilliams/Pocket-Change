@@ -1,0 +1,4 @@
+name: PocketChange
+description: A sample command-line application
+dependencies:
+  sqljocky: any
