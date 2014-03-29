@@ -1,7 +1,7 @@
 /* override for Bootstrap CSS */
 
 body {
-  padding-top: 70px;
+  padding-top: 51px;
 }
 
 .top-padding {
@@ -13,16 +13,26 @@ body {
 }
 
 .register-button-color:hover {
-	background-color: #FCB557;
+	background-color: #c24704;
 }
 
 .sign-in-button-color {
-	background-color: #6FB447;
+	background-color: #c0d21a;
 
 }
 
 .sign-in-button-hover:hover {
-	background-color:#ACDA91;
+	background-color:#7e8a11;
+}
+
+
+/* Navbar styling */
+.navbar-color {
+	/*background-color: #c0d21a;*/
+}
+
+.center {
+	text-align: center;
 }
 
 
