@@ -1,12 +1,12 @@
 /* override for Bootstrap CSS */
+
+body {
+  padding-top: 70px;
+}
+
 .top-padding {
 	margin-top: 10px;
 }
-
-/*
-.background-color {
-	background-color: #6FB447;
-}*/
 
 .register-button-color {
 	background-color: #f99b1f;
@@ -24,3 +24,7 @@
 .sign-in-button-hover:hover {
 	background-color:#ACDA91;
 }
+
+
+/* Top bar */
+
