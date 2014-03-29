@@ -1,0 +1,40 @@
+/* override for Bootstrap CSS */
+
+body {
+  padding-top: 51px;
+}
+
+.top-padding {
+	margin-top: 10px;
+}
+
+.register-button-color {
+	background-color: #f99b1f;
+}
+
+.register-button-color:hover {
+	background-color: #c24704;
+}
+
+.sign-in-button-color {
+	background-color: #c0d21a;
+
+}
+
+.sign-in-button-hover:hover {
+	background-color:#7e8a11;
+}
+
+
+/* Navbar styling */
+.navbar-color {
+	/*background-color: #c0d21a;*/
+}
+
+
+/* full width carousel */
+
+html,body{height:100%;}
+.carousel,.item,.active{height:100%;}
+.carousel-inner{height:100%;}
+.fill{width:100%;height:100%;background-position:center;background-size:cover;}
