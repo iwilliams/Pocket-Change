@@ -1,6 +1,12 @@
+library pocketchange;
+
 import 'dart:io';
 import 'dart:convert';
-import 'package:sqljocky/sqljocky.dart';
+import 'src/user.dart';
+import 'src/organizations.dart';
+import 'src/donations.dart';
+import 'src/auth.dart';
+
 
 /* A simple web server that responds to **ALL** GET requests by returning
  * the contents of data.json file, and responds to ALL **POST** requests
@@ -58,20 +64,28 @@ void handleGet(HttpRequest req) {
   print("${req.method}: ${req.uri.path}");
   addCorsHeaders(res);
   
-  var pool = new ConnectionPool(host: 'localhost', port: 3306, user: 'pocket_change', password: 'p0ck3t c4ng3 5t@rt up', db: 'pocket_change', max:1);
-  print('conected');
+  print('Parsing URI');
+  String uriString = req.uri.path;
+//  List<String> uriList = uriString.split('/');
+  List<String> uriList = req.uri.path.split('/');
   
-  pool.prepare("SELECT * FROM Donations").then((query) {
-  	
-  	return query.execute();
-  	
-  }).then((results){
-  	
-  	results.forEach((row){
-  		print(row[0]);
-  	});
-  	
-  });
+  switch(uriList.elementAt(1)) {
+  	case 'auth':
+  		print('auth get');
+  		break;
+  	case 'user':
+  		print('user get');
+  		break;
+  	case 'organization':
+  		print('organization get');
+  		break;
+  	case 'donation':
+  		print('donations get');
+  		break;
+  	default:
+  		res.statusCode = HttpStatus.NOT_FOUND;
+  		break;
+  }
   
   res.write('Success!');
   res.close();
