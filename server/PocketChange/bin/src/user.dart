@@ -16,7 +16,7 @@ class User {
       	
       	List<Map> json = new List();
       	
-      	for (var row in results) {
+      	results.forEach((row) {
       		Map<String, String> map = new Map();
       		map['UID'] = row[0];
       		map['Name'] = row[1];
@@ -25,7 +25,7 @@ class User {
       		map['Monthly_Amount'] = row[4];
       		map['Monthly_Swipe'] = row[5];
       		json.add(map);
-      	}
+      	});
       	
       	return JSON.encode(json);
       	

@@ -3,9 +3,9 @@ library pocketchange;
 import 'dart:io';
 import 'dart:convert';
 import 'src/user.dart';
-import 'src/organizations.dart';
-import 'src/donations.dart';
-import 'src/auth.dart';
+//import 'src/organizations.dart';
+//import 'src/donations.dart';
+//import 'src/auth.dart';
 
 
 /* A simple web server that responds to **ALL** GET requests by returning
@@ -75,6 +75,10 @@ void handleGet(HttpRequest req) {
   		break;
   	case 'user':
   		print('user get');
+  		User.getUser(name: uriList.elementAt(2)).then((result){
+  			res.write(result);
+  			res.close();
+  		});
   		break;
   	case 'organization':
   		print('organization get');
@@ -86,9 +90,6 @@ void handleGet(HttpRequest req) {
   		res.statusCode = HttpStatus.NOT_FOUND;
   		break;
   }
-  
-  res.write('Success!');
-  res.close();
 }
 
 /**
