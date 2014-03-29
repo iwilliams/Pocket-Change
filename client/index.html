@@ -17,11 +17,12 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="background-color">
+  <body>
+    <div class="col-xs-12 logo-style-index center">
+      <img src="img/LogoLeft.png" alt="logo">
+    </div>
     <div class="container">
-
       <form class="form-signin" role="form">
-        <h2 class="form-signin-heading">Pocket Change</h2>
         <input type="email" class="form-control" placeholder="Email" required="" autofocus="">
         <input type="password" class="form-control top-padding" placeholder="Password" required="">
         <button class="btn btn-lg btn-block sign-in-button-color sign-in-button-hover top-padding" type="button">Sign in</button>
