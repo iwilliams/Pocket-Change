@@ -4,7 +4,7 @@ import 'dart:async';
 
 class User {
  
-  static Future<String> getUser() {
+  static Future<String> getUser({int UID, String name}) {
     var pool = new ConnectionPool(host: 'localhost', port: 3306, user: 'pocket_change', password: 'p0ck3t c4@ng3', db: 'pocket_change', max:1);
     print("querying");
     return pool.query("SELECT * FROM Users").then((result) {

@@ -3,9 +3,8 @@ library pocketchange;
 import 'dart:io';
 import 'dart:convert';
 import 'src/user.dart';
-import 'package:sqljocky/sqljocky.dart';
-//import 'src/organizations.dart';
-//import 'src/donations.dart';
+import 'src/organization.dart';
+import 'src/donation.dart';
 //import 'src/auth.dart';
 
 
@@ -70,40 +69,39 @@ void handleGet(HttpRequest req) {
 //  List<String> uriList = uriString.split('/');
   List<String> uriList = req.uri.path.split('/');
   
-  User.getUser().then((result){
-  	res.write(result);
-  	res.close();
-  });
-  
-//  var pool = new ConnectionPool(host: 'localhost', port: 3306, user: 'pocket_change', password: 'p0ck3t c4@ng3', db: 'pocket_change', max:1);
-//  var example = new Example(pool);
-//  example.run().then((result) {
-//      pool.close();
-//      res.write(result);
-//      res.close();
-//   });
-  
-//  switch(uriList.elementAt(1)) {
-//  	case 'auth':
-//  		print('auth get');
-//  		break;
-//  	case 'user':
-//  		print('user get');
-//  		User.getUser(name: uriList.elementAt(2)).then((result){
-//  			res.write(result);
-//  			res.close();
-//  		});
-//  		break;
-//  	case 'organization':
-//  		print('organization get');
-//  		break;
-//  	case 'donation':
-//  		print('donations get');
-//  		break;
-//  	default:
-//  		res.statusCode = HttpStatus.NOT_FOUND;
-//  		break;
-//  }
+//  User.getUser().then((result){
+//  	res.write(result);
+//  	res.close();
+//  });
+ 
+  switch(uriList.elementAt(1)) {
+  	case 'auth':
+  		print('auth get');
+  		break;
+  	case 'user':
+  		print('user get');
+  		User.getUser(name: uriList.elementAt(2)).then((result){
+  			res.write(result);
+  			res.close();
+  		});
+  		break;
+  	case 'organization':
+  		Organization.getOrganizations().then((result){
+        res.write(result);
+      	res.close();
+      });
+  		break;
+  	case 'donation':
+ 			Donation.getDonations().then((result){
+        res.write(result);
+      	res.close();
+      });
+  		break;
+  	default:
+  		res.statusCode = HttpStatus.NOT_FOUND;
+  		res.close();
+  		break;
+  }
 }
 
 /**
