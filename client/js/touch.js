@@ -1,20 +1,22 @@
 $(document).ready(function() {
 
-	var orgsUrl = 'data/orgs.json'; 
-/* 	var orgsUrl = 'getOrgs.php'; */
+/* 	var orgsUrl = 'data/orgs.json';  */
+	var orgsUrl = 'getOrgs.php';
 
 	$.ajax({
 	    type : 'GET',
 	    url : orgsUrl,
 	    success : function(data) {
+	    	data = jQuery.parseJSON(data);
 		    for(var i = 0; i < data.length; i++) {
 			    console.log(data[i]);
-			    var item = $('<div class="org">');
+			    var item = $('<div class="org" data-oid="' + data[i].OID + '">');
 			    item.append('<img class="logo" src="' + data[i].Logo + '" alt="" />');
 			    
 			    var caption = $('<div class="org-caption">');
 			    caption.append('<h1>' + data[i].Name + '</h1>'); 
 				caption.append('<p>' + data[i].Description + '</p>');
+				caption.append('<h2 class="donations" data-rating="' + data[i].Rating + '">Donations: ' + data[i].Rating + '</h2>');
 				
 				item.append(caption);
 				$('#org-holder').append(item);
@@ -33,14 +35,12 @@ $(document).ready(function() {
 	   });  
 }); 
 
+
 function next(direction) {
-	if(direction > 0) {
-		var animateDirection = {"left" : '100%'};
-	} else {
-		var animateDirection = {"right" : '100%'};
-	}
-	var orgs = $('.org');
-	orgs.eq(0).animate(
+	
+	function slideOrgs() {
+		var orgs = $('.org');
+		orgs.eq(0).animate(
 		animateDirection, 
 		500, 
 		function(){
@@ -53,5 +53,27 @@ function next(direction) {
 		  });
 		}
 	);
+	}
+	
+	if(direction > 0) {
+		var animateDirection = {"left" : '100%'};
+		$.ajax({
+	    type : 'POST',
+	    url : 'donate.php',
+	    data : 'UID:0,OID:' + $('.org').eq(0).attr('data-oid') + ',Rating:' + (parseInt($('.org').eq(0).find('.donations').eq(0).attr('data-rating')) + 1),
+	    success : function(data) {
+				var orgs = $('.org');
+				orgs.eq(0).find('.donations').eq(0).html("Donations: " + (parseInt(orgs.eq(0).find('.donations').eq(0).attr('data-rating')) + 1));
+				orgs.eq(0).find('.donations').eq(0).attr('data-rating', parseInt(orgs.eq(0).find('.donations').eq(0).attr('data-rating')) + 1);
+				var timeoutID = window.setTimeout(slideOrgs, 200);
+		},
+		error : function() {
+			alert('error');
+		}
+		});
+	} else {
+		var animateDirection = {"right" : '100%'};
+		slideOrgs();
+	}
 	
 }

@@ -14,6 +14,7 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
+      <li><a href="vote.php">Donate</a></li>
       <li><a href="#">My Stats</a></li>
       <li><a href="#">Achievements</a></li>
       <li><a href="about.html">About</a></li>
