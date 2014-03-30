@@ -17,7 +17,7 @@
       <li><a href="vote.php">Donate</a></li>
       <li><a href="#">My Stats</a></li>
       <li><a href="#">Achievements</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="about.php">About</a></li>
     </ul>
     </div>
   </nav>

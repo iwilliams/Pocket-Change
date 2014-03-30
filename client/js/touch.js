@@ -23,8 +23,8 @@ $(document).ready(function() {
 				container.append(caption);
 				
 				var bottom = $('<div class="bottom">');
-				bottom.append('<h4 class="skip"><i class="fa fa-arrow-left"></i> Skip</h4><h4 class="donate">Donate <i class="fa fa-arrow-right"></i></h4>');
-				bottom.append('<h4 class="donations" data-rating="' + data[i].Rating + '">Donations: ' + data[i].Rating + '</h4>');
+				bottom.append('<h5 class="skip"><i class="fa fa-arrow-left"></i> Skip</h5><h5 class="donate">Donate <i class="fa fa-arrow-right"></i></h5>');
+				bottom.append('<h5 class="donations" data-rating="' + data[i].Rating + '">Donations: ' + data[i].Rating + '</h5>');
 				
 				container.append(bottom);
 				
@@ -54,8 +54,14 @@ $(document).ready(function() {
 	    
 }); 
 
+var sliding = false;
+
 
 function next(direction) {
+
+	if(!sliding) {
+	
+	sliding = true;
 	
 	function slideOrgs() {
 		var orgs = $('.org');
@@ -74,6 +80,7 @@ function next(direction) {
 		  	removedOrg.find('.skip').click(function(){
 			  	 next(-1);
 		  	});
+		  	sliding = false;
 		  });
 		}
 	);
@@ -87,9 +94,9 @@ function next(direction) {
 	    data : 'UID:0,OID:' + $('.org').eq(0).attr('data-oid') + ',Rating:' + (parseInt($('.org').eq(0).find('.donations').eq(0).attr('data-rating')) + 1),
 	    success : function(data) {
 				var orgs = $('.org');
-				orgs.eq(0).find('.donations').eq(0).html("Donations: " + (parseInt(orgs.eq(0).find('.donations').eq(0).attr('data-rating')) + 1));
+				orgs.eq(0).find('.donations').eq(0).html("<span style='display:inline;vertical-align:middle'>Donations: </span><span style='color: #AD9F00;font-weight: bold;font-size:1.5em;display:inline;vertical-align:middle;'>" + (parseInt(orgs.eq(0).find('.donations').eq(0).attr('data-rating')) + 1) + "</span>").css('margin-top', '-.25em');
 				orgs.eq(0).find('.donations').eq(0).attr('data-rating', parseInt(orgs.eq(0).find('.donations').eq(0).attr('data-rating')) + 1);
-				var timeoutID = window.setTimeout(slideOrgs, 200);
+				var timeoutID = window.setTimeout(slideOrgs, 400);
 		},
 		error : function() {
 			alert('error');
@@ -100,6 +107,8 @@ function next(direction) {
 			"right" : '100%',
 			"opacity" : 0};
 		slideOrgs();
+	}
+	
 	}
 	
 }
