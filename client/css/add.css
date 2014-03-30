@@ -79,6 +79,8 @@ body {
 	-moz-box-sizing: border-box;
 	border: 1px solid #666;
 	box-shadow: 0px 0px 10px #333;
+	-webkit-transition: box-shadow .2s; /* For Safari 3.1 to 6.0 */
+	transition: box-shadow .2s;
 }
 
 .bottom {

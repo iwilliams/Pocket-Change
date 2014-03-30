@@ -10,7 +10,7 @@
     <div id="login-container">
 
     <div class="about_text center">
-      <h1> Pocket Change </h1>
+      <h1 style="margin-top:0;">Pocket Change</h1>
 
       <p> Pocket Change is a micro-donation app that helps you support a number of non-profits, no matter how much you have to give. With Pocket Change, you set the amount you’re able to give every month, to as low as $5. From there, you can discover new charities through our easy to use swiping interface. Each time you “give” to a charity, you are supporting their cause.</p>
 
