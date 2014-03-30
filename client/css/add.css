@@ -43,6 +43,24 @@ body {
 	margin-bottom: 5px;
 }
 
+.logo {
+	display: block;
+	margin: 10px auto 0;
+}
+
+
+#org-holder {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.org {
+	width: 100%;
+	height: 100%;
+	float: left;
+	position: relative;
+}
 
 /* full width carousel */
 

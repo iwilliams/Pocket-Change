@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-
+	<script type="text/javascript">
+		
+	</script>
     <!-- Swipe for Carousel -->
    <script src="js/touch.js"></script>
 
@@ -35,34 +37,9 @@
   </head>
   <body>
 
-
-<?php include 'navbar.php'; ?>
-
-  <!-- Carousel  -->
-
-  <div id="myCarousel" class="carousel slide">
-
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-  <div class="item active">
-    <img src="http://placehold.it/900x500" alt="">
-    <div class="carousel-caption">
-      slide 1
-    </div>
-  </div>
-  <div class="item">
-    <img src="http://placehold.it/900x500" alt="">
-    <div class="carousel-caption">
-      slide 2
-    </div>
-  </div>
-  <div class="item">
-    <img src="http://placehold.it/900x500" alt="">
-    <div class="carousel-caption">
-      slide 3
-    </div>
-  </div>
-  </div>  
+	  <?php include 'navbar.php'; ?>
+	 
+	  <div id="org-holder">
+	  </div>  
   </body>
 </html>
