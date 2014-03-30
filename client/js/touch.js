@@ -16,6 +16,7 @@ $(document).ready(function() {
 			    var caption = $('<div class="org-caption">');
 			    caption.append('<h1>' + data[i].Name + '</h1>'); 
 				caption.append('<p>' + data[i].Description + '</p>');
+				caption.append('<a target="_blank" href="http://' + data[i].Link + '" >Visit Site</a>');
 				caption.append('<h2 class="donations" data-rating="' + data[i].Rating + '">Donations: ' + data[i].Rating + '</h2>');
 				
 				item.append(caption);
@@ -47,16 +48,18 @@ function next(direction) {
 		  orgs.eq(0).animate({
 		    'margin-top' : '-150%'
 		  }, 500, function() {
-		  	$('#org-holder').append(orgs.eq(0).remove().css('margin-top', 'auto'));
-		    $('#org-holder').append(orgs.eq(0).remove().css('left', 'auto'));
+		  	$('#org-holder').append(orgs.eq(0).remove().css('margin-top', 'auto').css('left', 'auto').css('right', 'auto').css("opacity", 1));
+		    /*
+$('#org-holder').append(orgs.eq(0).remove().css('left', 'auto'));
 		    $('#org-holder').append(orgs.eq(0).remove().css('right', 'auto'));
+*/
 		  });
 		}
 	);
 	}
 	
 	if(direction > 0) {
-		var animateDirection = {"left" : '100%'};
+		var animateDirection = {"left" : '100%', "opacity" : 0};
 		$.ajax({
 	    type : 'POST',
 	    url : 'donate.php',
@@ -72,7 +75,9 @@ function next(direction) {
 		}
 		});
 	} else {
-		var animateDirection = {"right" : '100%'};
+		var animateDirection = {
+			"right" : '100%',
+			"opacity" : 0};
 		slideOrgs();
 	}
 	

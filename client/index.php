@@ -22,7 +22,7 @@
       <img src="img/LogoLeft.png" alt="logo">
     </div>
     <div class="container">
-      <form class="form-signin" role="form">
+      <form class="form-signin" role="form" action="vote.php">
         <input type="email" class="form-control" placeholder="Email" required="" autofocus="">
         <input type="password" class="form-control top-padding" placeholder="Password" required="">
         <button class="btn btn-lg btn-block sign-in-button-color sign-in-button-hover top-padding" type="button">Sign in</button>
