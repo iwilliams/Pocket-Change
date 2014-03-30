@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-/* 	var orgsUrl = 'data/orgs.json';  */
+ 	//var orgsUrl = 'data/orgs.json';  
 	var orgsUrl = 'getOrgs.php';
 
 	$.ajax({
@@ -11,29 +11,47 @@ $(document).ready(function() {
 		    for(var i = 0; i < data.length; i++) {
 			    console.log(data[i]);
 			    var item = $('<div class="org" data-oid="' + data[i].OID + '">');
-			    item.append('<img class="logo" src="' + data[i].Logo + '" alt="" />');
+			    var container = $('<div class="org-container">');
+			    
+			    container.append('<img class="logo" src="' + data[i].Logo + '" alt="" />');
 			    
 			    var caption = $('<div class="org-caption">');
-			    caption.append('<h1>' + data[i].Name + '</h1>'); 
+			    caption.append('<h3>' + data[i].Name + '</h3>'); 
 				caption.append('<p>' + data[i].Description + '</p>');
-				caption.append('<a target="_blank" href="http://' + data[i].Link + '" >Visit Site</a>');
-				caption.append('<h2 class="donations" data-rating="' + data[i].Rating + '">Donations: ' + data[i].Rating + '</h2>');
+				caption.append('<a target="_blank" href="' + data[i].Link + '" >Visit Site</a>');
 				
-				item.append(caption);
+				container.append(caption);
+				
+				var bottom = $('<div class="bottom">');
+				bottom.append('<h4 class="skip"><i class="fa fa-arrow-left"></i> Skip</h4><h4 class="donate">Donate <i class="fa fa-arrow-right"></i></h4>');
+				bottom.append('<h4 class="donations" data-rating="' + data[i].Rating + '">Donations: ' + data[i].Rating + '</h4>');
+				
+				container.append(bottom);
+				
+				item.append(container);
 				$('#org-holder').append(item);
-		    }			
+		    }
+		    
+		    $("#org-holder").swiperight(function() {  
+		      next(1);
+		    });
+		    $(".donate").click(function() {  
+		      next(1);
+		    });  
+		   $("#org-holder").swipeleft(function() {  
+		      next(-1);  
+		   });
+		   $(".skip").click(function() {  
+		      next(-1);  
+		   });  
+		    			
 	    }
 	});
 
 	
 	
  
-	   $("#org-holder").swiperight(function() {  
-		  next(1);
-		});  
-	   $("#org-holder").swipeleft(function() {  
-	      next(-1);  
-	   });  
+	    
 }); 
 
 
@@ -47,12 +65,15 @@ function next(direction) {
 		function(){
 		  orgs.eq(0).animate({
 		    'margin-top' : '-150%'
-		  }, 500, function() {
-		  	$('#org-holder').append(orgs.eq(0).remove().css('margin-top', 'auto').css('left', 'auto').css('right', 'auto').css("opacity", 1));
-		    /*
-$('#org-holder').append(orgs.eq(0).remove().css('left', 'auto'));
-		    $('#org-holder').append(orgs.eq(0).remove().css('right', 'auto'));
-*/
+		  }, 200, function() {
+		  	var removedOrg = orgs.eq(0).remove().css('margin-top', 'auto').css('left', 'auto').css('right', 'auto').css("opacity", 1);
+		  	$('#org-holder').append(removedOrg);
+		  	removedOrg.find('.donate').click(function(){
+			  	 next(1);
+		  	});
+		  	removedOrg.find('.skip').click(function(){
+			  	 next(-1);
+		  	});
 		  });
 		}
 	);

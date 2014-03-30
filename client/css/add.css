@@ -2,6 +2,7 @@
 
 body {
   padding-top: 51px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .top-padding {
@@ -54,6 +55,7 @@ body {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
+	background: #7B6C97;
 }
 
 .org {
@@ -63,7 +65,43 @@ body {
 	position: relative;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	padding: 2% 4%;
+}
+
+.org-container {
+	margin: 2.5%;
+	position: relative;
+	height: 95%;
+	box-sizing: border-box;
+	padding: 4%;
+	border-radius: 6px;
+	background: #ffffff;
+	-moz-box-sizing: border-box;
+}
+
+.bottom {
+	position: absolute;
+	bottom: 0;
+	width: 92%;
+	height: 2em;
+}
+
+.skip, .donate {
+	margin: 0;
+	position: absolute;
+	cursor: pointer;
+}
+
+.skip {
+	left: 0;
+}
+
+.donate {
+	right: 0;
+}
+
+.donations {
+	margin: 0 auto;
+	text-align: center;
 }
 
 /* full width carousel */

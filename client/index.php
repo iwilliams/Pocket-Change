@@ -25,7 +25,7 @@
       <form class="form-signin" role="form" action="vote.php">
         <input type="email" class="form-control" placeholder="Email" required="" autofocus="">
         <input type="password" class="form-control top-padding" placeholder="Password" required="">
-        <button class="btn btn-lg btn-block sign-in-button-color sign-in-button-hover top-padding" type="button">Sign in</button>
+        <button class="btn btn-lg btn-block sign-in-button-color sign-in-button-hover top-padding" type="button" onclick="window.location = 'vote.php'">Sign in</button>
         <button class="btn btn-lg btn-block register-button-color" type="button">Register</button>
       </form>
 
