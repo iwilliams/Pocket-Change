@@ -3,14 +3,14 @@ $(document).ready(function() {
 	$.event.special.swipe.durationThreshold = 500;
 	$.event.special.swipe.scrollSupressionThreshold = 15;
 
- 	//var orgsUrl = 'data/orgs.json';  
-	var orgsUrl = 'getOrgs.php';
+ 	var orgsUrl = 'data/orgs.json';  
+	//var orgsUrl = 'getOrgs.php';
 
 	$.ajax({
 	    type : 'GET',
 	    url : orgsUrl,
 	    success : function(data) {
-	    	data = jQuery.parseJSON(data);
+	    	//data = jQuery.parseJSON(data);
 		    for(var i = 0; i < data.length; i++) {
 			    console.log(data[i]);
 			    var item = $('<div class="org" data-oid="' + data[i].OID + '">');
